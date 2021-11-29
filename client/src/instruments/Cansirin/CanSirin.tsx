@@ -2,7 +2,7 @@
 import * as Tone from "tone";
 import classNames from "classnames";
 import { List, Range } from "immutable";
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useState } from "react";
 import { Instrument, InstrumentProps } from "../../Instruments";
 import { useStartPlayer } from "../../hooks/useStartPlayer";
 
@@ -20,7 +20,6 @@ interface CanSirinBlockProps {
 
 const CansirinBlock: FC<CanSirinBlockProps> = ({
   children,
-  synth,
   note,
   active,
   sampler,
@@ -31,16 +30,10 @@ const CansirinBlock: FC<CanSirinBlockProps> = ({
         if (sampler) {
           sampler.triggerAttack(`${note}`);
         }
-        if (synth) {
-          synth.triggerAttack(`${note}`);
-        }
       }}
       onMouseUp={() => {
         if (sampler) {
           sampler.triggerRelease("+0.25");
-        }
-        if (synth) {
-          synth.triggerRelease("+0.25");
         }
       }}
       className={classNames("ba pointer dim", {
@@ -89,9 +82,9 @@ const Cansirin: FC<InstrumentProps> = ({ state, dispatch, notes }) => {
   const [sampler, setSampler] = useState(
     new Tone.Sampler({
       urls: {
-        C4: "KickC.mp3",
-        D4: "KickD.mp3",
-        E4: "KickE.wav",
+        C3: "KickC.mp3",
+        D3: "KickD.mp3",
+        E3: "KickE.wav",
         // "F#4": "/samples/Kick - Fsharp.wav",
         // A4: "/samples/Kick - A.wav",
         // A1: "A1.mp3",
@@ -106,7 +99,6 @@ const Cansirin: FC<InstrumentProps> = ({ state, dispatch, notes }) => {
       baseUrl: "http://localhost:3000/",
     }).toDestination()
   );
-  console.log(sampler, "sampler");
   useStartPlayer(sampler, state, dispatch, notes);
 
   return (

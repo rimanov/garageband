@@ -1,13 +1,12 @@
 // 3rd party library imports
-import P5 from 'p5';
-import * as Tone from 'tone';
+import P5 from "p5";
+import * as Tone from "tone";
 
 // project imports
-import { Visualizer } from '../Visualizers';
-
+import { Visualizer } from "../Visualizers";
 
 export const WaveformVisualizer = new Visualizer(
-  'Waveform',
+  "Waveform",
   (p5: P5, analyzer: Tone.Analyser) => {
     const width = window.innerWidth;
     const height = window.innerHeight / 2;
@@ -29,5 +28,5 @@ export const WaveformVisualizer = new Visualizer(
       p5.vertex(x, y);
     }
     p5.endShape();
-  },
+  }
 );

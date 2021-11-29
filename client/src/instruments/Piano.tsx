@@ -2,7 +2,7 @@
 import * as Tone from "tone";
 import classNames from "classnames";
 import { List, Range } from "immutable";
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useState } from "react";
 
 // project imports
 import { Instrument, InstrumentProps } from "../Instruments";

@@ -1,6 +1,5 @@
 // 3rd party library imports
-import React, { useState, useEffect } from "react";
-import * as Tone from "tone";
+import React from "react";
 
 // project imports
 import { DispatchAction } from "./Reducer";
@@ -57,33 +56,6 @@ export const InstrumentContainer: React.FC<InstrumentContainerProps> = ({
   const InstrumentComponent = instrument.component;
 
   const notes = state.get("notes");
-
-  // useEffect(() => {
-  //   if (notes) {
-  //     let eachNote = notes.split(" ");
-  //     let noteObjs = eachNote.map((note: string, idx: number) => ({
-  //       idx,
-  //       time: `+${idx / 4}`,
-  //       note,
-  //       velocity: 1,
-  //     }));
-  //
-  //     new Tone.Part((time, value) => {
-  //       // the value is an object which contains both the note and the velocity
-  //       if (value.idx === eachNote.length - 1) {
-  //         dispatch(new DispatchAction("STOP_SONG"));
-  //       }
-  //     }, noteObjs).start(0);
-  //
-  //     Tone.Transport.start();
-  //
-  //     return () => {
-  //       Tone.Transport.cancel();
-  //     };
-  //   }
-  //
-  //   return () => {};
-  // }, [notes, dispatch]);
 
   return (
     <div>

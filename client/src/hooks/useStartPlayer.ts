@@ -37,5 +37,5 @@ export const useStartPlayer = (
     return () => {
       console.log("cleanup");
     };
-  }, [notes, dispatch]);
+  }, [notes, dispatch, player]);
 };
