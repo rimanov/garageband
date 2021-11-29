@@ -25,7 +25,11 @@
       "web-vitals": "^1.1.2"
    },
    "scripts": {
+<<<<<<< HEAD
       "start": "SET PORT=3000 && react-scripts start",
+=======
+      "start": "react-scripts start",
+>>>>>>> fa7088f (latest changes by rimanov)
       "prod": "npm run build; python3 -m http.server --directory build --bind 127.0.0.1 3002",
       "server": "node -r dotenv server/index.ts",
       "build": "react-scripts build"

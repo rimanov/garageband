@@ -8,6 +8,8 @@ import { CansirinVisualizer } from "./visualizers/Cansirin";
 import { CanSirinInstrument } from "./instruments/Cansirin/CanSirin";
 import { Vdao182Visualizer } from "./visualizers/Vdao182";
 import { Vdao182Instrument } from "./instruments/vdao182/Vdao182";
+import { RimanovVisualizer } from "./visualizers/Rimanov";
+import { RimanovInstrument } from "./instruments/rimanov/Rimanov";
 
 /** ------------------------------------------------------------------------ **
  * The entire application state is stored in AppState.
