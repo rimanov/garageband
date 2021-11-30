@@ -89,10 +89,10 @@ const Rimanov: FC<InstrumentProps> = ({ state, dispatch, notes }) => {
     const [sampler, setSampler] = useState(
         new Tone.Sampler({
             urls: {
-                G1:"ukuleleG.mp3",
-                C1:"ukuleleC.mp3",
-                E1:"ukuleleE.mp3",
-                A1:"ukuleleA.mp3",
+                G1: "ukuleleG.mp3",
+                C1: "ukuleleC.mp3",
+                E1: "ukuleleE.mp3",
+                A1: "ukuleleA.mp3",
 
                 // "F#4": "/samples/Kick - Fsharp.wav",
                 // A4: "/samples/Kick - A.wav",
@@ -113,7 +113,7 @@ const Rimanov: FC<InstrumentProps> = ({ state, dispatch, notes }) => {
 
 
 const css = `
-    * {
+* {
     margin: 0;
     padding: 0;
     list-style-type: none;
@@ -195,7 +195,6 @@ li:nth-child(4) {
     height: 6px;
 } 
 `
-    
     return (
         <div>
             <style>

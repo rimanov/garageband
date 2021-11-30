@@ -5,8 +5,6 @@ import * as Tone from "tone";
 
 // project imports
 import { Visualizer } from "../Visualizers";
-let symmetry = 6;
-let angle = 360 / symmetry;
 
 export const RimanovVisualizer = new Visualizer(
   "Rimanov Visualizer",
@@ -14,7 +12,6 @@ export const RimanovVisualizer = new Visualizer(
     const width = window.innerWidth;
     const height = window.innerHeight / 2;
     p5.background('orange');
-    p5.noStroke();
     p5.translate(width / 2, height / 2);
     p5.noiseDetail(2, 1);
 
