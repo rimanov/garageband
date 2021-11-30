@@ -78,21 +78,22 @@ interface RimanovProps extends InstrumentProps {
 
 const Rimanov: FC<InstrumentProps> = ({ state, dispatch, notes }) => {
     const abc = List([
-        { note: "C" },
-        { note: "D" },
-        { note: "E" },
-        { note: "F" },
         { note: "G" },
+
+        { note: "C" },
+
+        { note: "E" },
         { note: "A" },
-        { note: "B" },
+
     ]);
     const [sampler, setSampler] = useState(
         new Tone.Sampler({
             urls: {
-                C4: "1st.mp3",
-                G4: "2nd.mp3",
-                E4: "3rd.mp3",
-                A4: "4th.mp3",
+                G1:"ukuleleG.mp3",
+                C1:"ukuleleC.mp3",
+                E1:"ukuleleE.mp3",
+                A1:"ukuleleA.mp3",
+
                 // "F#4": "/samples/Kick - Fsharp.wav",
                 // A4: "/samples/Kick - A.wav",
                 // A1: "A1.mp3",
@@ -134,8 +135,8 @@ h1 {
     position: relative;
     margin-top: 40px;
     left: 50%;
-    margin-left: -450px;
-    width: 960px;
+    margin-left: -250px;
+    width: 500px;
     height: 250px;
     background: #755628;
     box-shadow: inset -1px 0px 11px 0px rgba(0, 0, 0, 0.75);
@@ -164,7 +165,7 @@ h1 {
     position: absolute;
     left: 0;
     top: 50px;
-    width: 960px;
+    width: 500px;
     height: 250px;
 }
 
@@ -208,12 +209,8 @@ li:nth-child(4) {
                 <div className="fret"></div>
                 <div className="fret"></div>
                 <div className="fret"></div>
-                <div className="fret"></div>
-                <div className="fret"></div>
-                <div className="fret"></div>
-                <div className="fret"></div>
-                <div className="fret"></div>
-                <div className="fret"></div>
+
+
 
                 <ul className="strings">
                     <li></li>
@@ -222,7 +219,7 @@ li:nth-child(4) {
                     <li></li>
                 </ul>
                 <div style={{ display: "flex", flexDirection: "row", padding: "2rem" }}>
-                    {Range(2, 7).map((octave) =>
+                    {Range(1, 7).map((octave) =>
                         abc.map((key) => {
                             const note = `${key.note}${octave}`;
                             return (

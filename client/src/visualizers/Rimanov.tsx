@@ -5,30 +5,39 @@ import * as Tone from "tone";
 
 // project imports
 import { Visualizer } from "../Visualizers";
+let symmetry = 6;
+let angle = 360 / symmetry;
 
 export const RimanovVisualizer = new Visualizer(
   "Rimanov Visualizer",
   (p5: P5, analyzer: Tone.Analyser) => {
     const width = window.innerWidth;
     const height = window.innerHeight / 2;
-    const dim = Math.min(width, height);
-
-    p5.background(0, 0, 0, 255);
-
-    p5.strokeWeight(dim * 0.01);
-    p5.stroke(255, 255, 255, 255);
-    p5.noFill();
+    p5.background('orange');
+    p5.noStroke();
+    p5.translate(width / 2, height / 2);
+    p5.noiseDetail(2, 1);
 
     const values = analyzer.getValue();
-    p5.beginShape();
-    for (let i = 0; i < values.length; i++) {
-      const amplitude = values[i] as number;
-      const x = p5.map(i, 0, values.length - 1, 0, width);
-      const y = height / 2 + amplitude * height;
-      // Place vertex
-      p5.vertex(x, y);
+
+
+    p5.translate(width / 100, height / 100);
+    p5.rotate(p5.frameCount * 0.04);
+    for (let i = 0; i < 750; i++) {
+      let amplitude = values[p5.floor(p5.map(i, 0, values.length, 0, 1))] as number;
+      p5.push();
+      p5.rotate(p5.radians(i));
+      let maxHeight = p5.map(i, 0, values.length, 0, width / 13);
+      let y = p5.map(amplitude / 2, -1, 1, 1, maxHeight);
+
+      p5.stroke(0, 0, 100, 10);
+      p5.line(0, 0, 0, y);
+
+      let x = p5.map(amplitude / 2, -1, 0, 0, 0);
+      p5.fill('maroon');
+      p5.ellipse(x, y, 10, 50);
+      p5.pop();
     }
-    p5.endShape();
   }
 );
 =======
