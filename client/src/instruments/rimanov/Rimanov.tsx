@@ -48,9 +48,12 @@ const RimanovBlock: FC<RimanovBlockProps> = ({
                 "bg-white black": !active,
             })}
             style={{
-                width: "2rem",
-                height: "2rem",
+                width: "30px",
+                height: "30px",
                 marginLeft: "0.25rem",
+                borderRadius: "50%",
+                textAlign: "center",
+                padding: "3px"
             }}
         >
             {children}
@@ -79,9 +82,7 @@ interface RimanovProps extends InstrumentProps {
 const Rimanov: FC<InstrumentProps> = ({ state, dispatch, notes }) => {
     const abc = List([
         { note: "G" },
-
         { note: "C" },
-
         { note: "E" },
         { note: "A" },
 
@@ -209,16 +210,14 @@ li:nth-child(4) {
                 <div className="fret"></div>
                 <div className="fret"></div>
 
-
-
                 <ul className="strings">
                     <li></li>
                     <li></li>
                     <li></li>
                     <li></li>
-                </ul>
-                <div style={{ display: "flex", flexDirection: "row", padding: "2rem" }}>
-                    {Range(1, 7).map((octave) =>
+                </ul>               
+                <div style={{display: "flex", flexDirection: "column", padding: "1rem", position: "absolute", top: "50px"}}>
+                    {Range(1, 2).map((octave) =>
                         abc.map((key) => {
                             const note = `${key.note}${octave}`;
                             return (
@@ -229,10 +228,49 @@ li:nth-child(4) {
                         })
                     )}
                 </div>
-            </div>
+
+                <div style={{ display: "flex", flexDirection: "column", padding: "1rem", position: "absolute", left:"79px", top:"50px"}}>
+                {Range(2, 3).map((octave) =>
+                        abc.map((key) => {
+                            const note = `${key.note}${octave}`;
+                            return (
+                                <RimanovBlock key={note} note={note} sampler={sampler}>
+                                    {note}
+                                </RimanovBlock>
+                            );
+                        })
+                    )}
+                </div>
+
+                <div style={{ display: "flex", flexDirection: "column", padding: "1rem", position: "absolute", left:"157px", top:"50px"}}>
+                {Range(3, 4).map((octave) =>
+                        abc.map((key) => {
+                            const note = `${key.note}${octave}`;
+                            return (
+                                <RimanovBlock key={note} note={note} sampler={sampler}>
+                                    {note}
+                                </RimanovBlock>
+                            );
+                        })
+                    )}
+                </div>
+
+                <div style={{ display: "flex", flexDirection: "column", padding: "1rem", position: "absolute", left:"236px", top:"50px"}}>
+                {Range(4, 5).map((octave) =>
+                        abc.map((key) => {
+                            const note = `${key.note}${octave}`;
+                            return (
+                                <RimanovBlock key={note} note={note} sampler={sampler}>
+                                    {note}
+                                </RimanovBlock>
+                            );
+                        })
+                    )}
+                </div>
+                
+        </div> 
 
         </div>
-
     );
 };
 
