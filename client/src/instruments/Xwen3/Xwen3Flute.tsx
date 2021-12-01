@@ -82,15 +82,18 @@ interface Xwen3Props extends InstrumentProps {
 }
 
 const Xwen3: FC<InstrumentProps> = ({ state, dispatch, notes }) => {
-  const abc = List([
+  const c = List([
     { note: "C" },
-    // { note: "D" },
-    // { note: "E" },
-    // { note: "F" },
-    //{ note: "G" },
-    // { note: "A" },
-    // { note: "B" },
   ]);
+
+  const g = List([
+    { note: "G" },
+  ]);
+
+  const d = List([
+    { note: "D" },
+  ]);
+
   const [sampler, setSampler] = useState(
     new Tone.Sampler({
       urls: {
@@ -119,12 +122,12 @@ const Xwen3: FC<InstrumentProps> = ({ state, dispatch, notes }) => {
 
   return (
     <div> 
-      <div style={{ backgroundImage:`url(${flute})`, width:"86%", padding:"1rem"}}>
-        <div style={{ display: "flex", flexDirection: "row", padding: "2.5rem" }}>
-          <table style={{display: "flex"}}>
-            <th style={{display: "flex", flexDirection: "row", marginLeft:"2.9rem"}}>
+      <div style={{ backgroundImage: `url(${flute})`, width: "86%", padding: "1rem" }}> C Notes
+        <div style={{ display: "flex", flexDirection: "row", padding: "1.5rem" }}>
+          <table className="cNotes" style={{ display: "flex" }}>
+            <th style={{ display: "flex", flexDirection: "row", marginLeft: "4rem" }}>
               {Range(3, 4).map((octave) =>
-                abc.map((key) => {
+                c.map((key) => {
                   const note = `${key.note}${octave}`;
                   return (
                     <Xwen3Block key={note} note={note} sampler={sampler}>
@@ -134,9 +137,9 @@ const Xwen3: FC<InstrumentProps> = ({ state, dispatch, notes }) => {
                 })
               )}
             </th>
-            <th style={{display: "flex", flexDirection: "row", marginLeft:"24.3rem"}}>
+            <th style={{ display: "flex", flexDirection: "row", marginLeft: "24.3rem" }}>
               {Range(4, 7).map((octave) =>
-                abc.map((key) => {
+                c.map((key) => {
                   const note = `${key.note}${octave}`;
                   return (
                     <Xwen3Block key={note} note={note} sampler={sampler}>
@@ -146,9 +149,91 @@ const Xwen3: FC<InstrumentProps> = ({ state, dispatch, notes }) => {
                 })
               )}
             </th>
-            <th style={{display: "flex", flexDirection: "row", marginLeft:"1.5rem"}}>
+            <th style={{ display: "flex", flexDirection: "row", marginLeft: "1.5rem" }}>
               {Range(7, 10).map((octave) =>
-                abc.map((key) => {
+                c.map((key) => {
+                  const note = `${key.note}${octave}`;
+                  return (
+                    <Xwen3Block key={note} note={note} sampler={sampler}>
+                      {note}
+                    </Xwen3Block>
+                  );
+                })
+              )}
+            </th>
+          </table>
+        </div>
+        <p>G Notes</p>
+        <div style={{ display: "flex", flexDirection: "row", padding: "2rem" }}> 
+          <table className="gNotes" style={{ display: "flex", marginTop: "0.25rem" }}>
+            <th style={{ display: "flex", flexDirection: "row", marginLeft: "3.5rem" }}>
+              {Range(3, 4).map((octave) =>
+                g.map((key) => {
+                  const note = `${key.note}${octave}`;
+                  return (
+                    <Xwen3Block key={note} note={note} sampler={sampler}>
+                      {note}
+                    </Xwen3Block>
+                  );
+                })
+              )}
+            </th>
+            <th style={{ display: "flex", flexDirection: "row", marginLeft: "24.3rem" }}>
+              {Range(4, 7).map((octave) =>
+                g.map((key) => {
+                  const note = `${key.note}${octave}`;
+                  return (
+                    <Xwen3Block key={note} note={note} sampler={sampler}>
+                      {note}
+                    </Xwen3Block>
+                  );
+                })
+              )}
+            </th>
+            <th style={{ display: "flex", flexDirection: "row", marginLeft: "1.5rem" }}>
+              {Range(7, 10).map((octave) =>
+                g.map((key) => {
+                  const note = `${key.note}${octave}`;
+                  return (
+                    <Xwen3Block key={note} note={note} sampler={sampler}>
+                      {note}
+                    </Xwen3Block>
+                  );
+                })
+              )}
+            </th>
+          </table>
+        </div>
+        <p>D Notes</p>
+        <div style={{ display: "flex", flexDirection: "row", padding: "2rem" }}> 
+          <table className="gNotes" style={{ display: "flex", marginTop: "-0.25rem" }}>
+            <th style={{ display: "flex", flexDirection: "row", marginLeft: "3.5rem" }}>
+              {Range(3, 4).map((octave) =>
+                d.map((key) => {
+                  const note = `${key.note}${octave}`;
+                  return (
+                    <Xwen3Block key={note} note={note} sampler={sampler}>
+                      {note}
+                    </Xwen3Block>
+                  );
+                })
+              )}
+            </th>
+            <th style={{ display: "flex", flexDirection: "row", marginLeft: "24.3rem" }}>
+              {Range(4, 7).map((octave) =>
+                d.map((key) => {
+                  const note = `${key.note}${octave}`;
+                  return (
+                    <Xwen3Block key={note} note={note} sampler={sampler}>
+                      {note}
+                    </Xwen3Block>
+                  );
+                })
+              )}
+            </th>
+            <th style={{ display: "flex", flexDirection: "row", marginLeft: "1.5rem" }}>
+              {Range(7, 10).map((octave) =>
+                d.map((key) => {
                   const note = `${key.note}${octave}`;
                   return (
                     <Xwen3Block key={note} note={note} sampler={sampler}>
