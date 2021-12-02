@@ -81,9 +81,9 @@ interface Vdao182Props extends InstrumentProps {
 
 const Vdao182: FC<InstrumentProps> = ({ state, dispatch, notes }) => {
   const aList = List([{ note: "A" }]);
-  const dList = List([ { note: "D"}]);
-  const eList = List([ { note: "E"}]);
-  const gList = List([ { note: "G"}]);
+  const dList = List([{ note: "D" }]);
+  const eList = List([{ note: "E" }]);
+  const gList = List([{ note: "G" }]);
   const [sampler, setSampler] = useState(
     new Tone.Sampler({
       urls: {
@@ -118,10 +118,34 @@ const Vdao182: FC<InstrumentProps> = ({ state, dispatch, notes }) => {
 
   return (
     <div>
-      <div style={{ backgroundImage:`url(${violin})`, width:"90%", padding:"13.5rem"}}>
-        <div style={{ display: "flex", flexDirection: "row-reverse", padding: "2rem", position: "absolute", marginTop: "-7rem", marginLeft: "-18rem"}}>
-        <h1 style={{ marginLeft: "20rem", fontSize:"large", marginTop:"2rem"}}> A</h1>
-          {Range(3,8).map((octave) =>
+      <div
+        style={{
+          backgroundImage: `url(${violin})`,
+          width: "90%",
+          padding: "13.5rem",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row-reverse",
+            padding: "2rem",
+            position: "absolute",
+            marginTop: "-7rem",
+            marginLeft: "-18rem",
+          }}
+        >
+          <h1
+            style={{
+              marginLeft: "20rem",
+              fontSize: "large",
+              marginTop: "2rem",
+            }}
+          >
+            {" "}
+            A
+          </h1>
+          {Range(3, 8).map((octave) =>
             aList.map((key) => {
               const note = `${key.note}${octave}`;
               return (
@@ -132,9 +156,27 @@ const Vdao182: FC<InstrumentProps> = ({ state, dispatch, notes }) => {
             })
           )}
         </div>
-        <div style={{ display: "flex", flexDirection: "row-reverse", padding: "2rem", position: "absolute", marginTop: "-4rem", marginLeft: "-18rem"}}>
-        <h1 style={{ marginLeft: "20rem", fontSize:"large", marginTop:"1rem"}}> D</h1>
-          {Range(3,8).map((octave) =>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row-reverse",
+            padding: "2rem",
+            position: "absolute",
+            marginTop: "-4rem",
+            marginLeft: "-18rem",
+          }}
+        >
+          <h1
+            style={{
+              marginLeft: "20rem",
+              fontSize: "large",
+              marginTop: "1rem",
+            }}
+          >
+            {" "}
+            D
+          </h1>
+          {Range(3, 8).map((octave) =>
             dList.map((key) => {
               const note = `${key.note}${octave}`;
               return (
@@ -145,9 +187,27 @@ const Vdao182: FC<InstrumentProps> = ({ state, dispatch, notes }) => {
             })
           )}
         </div>
-        <div style={{ display: "flex", flexDirection: "row-reverse", padding: "2rem", position: "absolute", marginTop: "-1rem", marginLeft: "-18rem"}}>
-        <h1 style={{ marginLeft: "20rem", fontSize:"large", marginTop:"-0.25rem"}}> E</h1>
-          {Range(3,8).map((octave) =>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row-reverse",
+            padding: "2rem",
+            position: "absolute",
+            marginTop: "-1rem",
+            marginLeft: "-18rem",
+          }}
+        >
+          <h1
+            style={{
+              marginLeft: "20rem",
+              fontSize: "large",
+              marginTop: "-0.25rem",
+            }}
+          >
+            {" "}
+            E
+          </h1>
+          {Range(3, 8).map((octave) =>
             eList.map((key) => {
               const note = `${key.note}${octave}`;
               return (
@@ -158,9 +218,27 @@ const Vdao182: FC<InstrumentProps> = ({ state, dispatch, notes }) => {
             })
           )}
         </div>
-        <div style={{ display: "flex", flexDirection: "row-reverse", padding: "2rem", position: "absolute", marginTop: "2rem", marginLeft: "-18rem"}}>
-        <h1 style={{ marginLeft: "20rem", fontSize:"large", marginTop:"-1.5rem"}}> G</h1>
-          {Range(3,8).map((octave) =>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row-reverse",
+            padding: "2rem",
+            position: "absolute",
+            marginTop: "2rem",
+            marginLeft: "-18rem",
+          }}
+        >
+          <h1
+            style={{
+              marginLeft: "20rem",
+              fontSize: "large",
+              marginTop: "-1.5rem",
+            }}
+          >
+            {" "}
+            G
+          </h1>
+          {Range(3, 8).map((octave) =>
             gList.map((key) => {
               const note = `${key.note}${octave}`;
               return (
@@ -170,8 +248,6 @@ const Vdao182: FC<InstrumentProps> = ({ state, dispatch, notes }) => {
               );
             })
           )}
-                  
-
         </div>
       </div>
     </div>
