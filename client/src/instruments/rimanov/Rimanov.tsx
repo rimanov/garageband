@@ -48,12 +48,13 @@ const RimanovBlock: FC<RimanovBlockProps> = ({
                 "bg-white black": !active,
             })}
             style={{
-                width: "30px",
-                height: "30px",
+                width: "2rem",
+                height: "0.5rem",
                 marginLeft: "0.25rem",
-                borderRadius: "50%",
                 textAlign: "center",
-                padding: "3px"
+                marginBottom: "2.5rem",
+                backgroundColor: "maroon",
+
             }}
         >
             {children}
@@ -87,25 +88,23 @@ const Rimanov: FC<InstrumentProps> = ({ state, dispatch, notes }) => {
         { note: "A" },
 
     ]);
+
     const [sampler, setSampler] = useState(
         new Tone.Sampler({
             urls: {
-                G1: "ukuleleG.mp3",
-                C1: "ukuleleC.mp3",
-                E1: "ukuleleE.mp3",
-                A1: "ukuleleA.mp3",
-
-                // "F#4": "/samples/Kick - Fsharp.wav",
-                // A4: "/samples/Kick - A.wav",
-                // A1: "A1.mp3",
-                // A2: "A2.mp3",
-                // C4: "C4.mp3",
-                // "D#4": "Ds4.mp3",
-                // "F#4": "Fs4.mp3",
-                // A4: "A4.mp3",
+                G1: "ukuleleG1.mp3",
+                E1: "ukuleleE1.mp3",
+                A1: "ukuleleA1.mp3",
+                G2: "ukuleleG2.mp3",
+                C2: "ukuleleC2.mp3",
+                E2: "ukuleleE2.mp3",
+                A2: "ukuleleA2.mp3",
+                G3: "ukuleleG3.mp3",
+                C3: "ukuleleC3.mp3",
+                E3: "ukuleleE3.mp3",
+                A3: "ukuleleA3.mp3",
+                C4: "ukuleleC4.mp3",
             },
-            // baseUrl: "https://tonejs.github.io/audio/casio/",
-            // baseUrl: "https://tonejs.github.io/audio/salamander/",
             baseUrl: "http://localhost:3000/",
         }).toDestination()
     );
@@ -113,7 +112,7 @@ const Rimanov: FC<InstrumentProps> = ({ state, dispatch, notes }) => {
     useStartPlayer(sampler, state, dispatch, notes);
 
 
-const css = `
+    const css = `
 * {
     margin: 0;
     padding: 0;
@@ -137,7 +136,7 @@ h1 {
     margin-top: 40px;
     left: 50%;
     margin-left: -250px;
-    width: 500px;
+    width: 700px;
     height: 250px;
     background: #755628;
     box-shadow: inset -1px 0px 11px 0px rgba(0, 0, 0, 0.75);
@@ -148,7 +147,7 @@ h1 {
     width: 3px;
     height: 250px;
     background: #d7d6d6;
-    margin-left: 75px;
+    margin-left: 90px;
     border-right: 2px solid #686868;
 }
 
@@ -166,10 +165,9 @@ h1 {
     position: absolute;
     left: 0;
     top: 50px;
-    width: 500px;
+    width: 700px;
     height: 250px;
 }
-
 li {
     height: 1px;
     display: inline-block;
@@ -183,15 +181,12 @@ li {
 li:nth-child(1) {
     height: 6px;
 }
-
 li:nth-child(2) {
     height: 6px;
 }
-
 li:nth-child(3) {
     height: 6px;
 }
-
 li:nth-child(4) {
     height: 6px;
 } 
@@ -209,67 +204,106 @@ li:nth-child(4) {
                 <div className="fret"></div>
                 <div className="fret"></div>
                 <div className="fret"></div>
+                <div className="fret"></div>
 
                 <ul className="strings">
                     <li></li>
                     <li></li>
                     <li></li>
                     <li></li>
-                </ul>               
-                <div style={{display: "flex", flexDirection: "column", padding: "1rem", position: "absolute", top: "50px"}}>
+                </ul>
+
+                <div style={{ display: "flex", flexDirection: "column", padding: "1rem", position: "absolute", left: "10px", top: "33px" }}>
+                    {Range(0, 1).map((octave) =>
+                        abc.map((key) => {
+                            const note = `${key.note}${octave}`;
+                            return (
+                                <RimanovBlock key={note} note={note} sampler={sampler}>
+                                    {/* {note} */}
+                                </RimanovBlock>
+                            );
+                        })
+                    )}
+                </div>
+
+                <div style={{ display: "flex", flexDirection: "column", padding: "1rem", position: "absolute", left: "100px", top: "33px" }}>
                     {Range(1, 2).map((octave) =>
                         abc.map((key) => {
                             const note = `${key.note}${octave}`;
                             return (
                                 <RimanovBlock key={note} note={note} sampler={sampler}>
-                                    {note}
+                                    {/* {note} */}
                                 </RimanovBlock>
                             );
                         })
                     )}
                 </div>
 
-                <div style={{ display: "flex", flexDirection: "column", padding: "1rem", position: "absolute", left:"79px", top:"50px"}}>
-                {Range(2, 3).map((octave) =>
+                <div style={{ display: "flex", flexDirection: "column", padding: "1rem", position: "absolute", left: "195px", top: "33px" }}>
+                    {Range(2, 3).map((octave) =>
                         abc.map((key) => {
                             const note = `${key.note}${octave}`;
                             return (
                                 <RimanovBlock key={note} note={note} sampler={sampler}>
-                                    {note}
+                                    {/* {note} */}
                                 </RimanovBlock>
                             );
                         })
                     )}
                 </div>
 
-                <div style={{ display: "flex", flexDirection: "column", padding: "1rem", position: "absolute", left:"157px", top:"50px"}}>
-                {Range(3, 4).map((octave) =>
+                <div style={{ display: "flex", flexDirection: "column", padding: "1rem", position: "absolute", left: "285px", top: "33px" }}>
+                    {Range(3, 4).map((octave) =>
                         abc.map((key) => {
                             const note = `${key.note}${octave}`;
                             return (
                                 <RimanovBlock key={note} note={note} sampler={sampler}>
-                                    {note}
+                                    {/* {note} */}
                                 </RimanovBlock>
                             );
                         })
                     )}
                 </div>
 
-                <div style={{ display: "flex", flexDirection: "column", padding: "1rem", position: "absolute", left:"236px", top:"50px"}}>
-                {Range(4, 5).map((octave) =>
+                <div style={{ display: "flex", flexDirection: "column", padding: "1rem", position: "absolute", left: "380px", top: "33px" }}>
+                    {Range(4, 5).map((octave) =>
                         abc.map((key) => {
                             const note = `${key.note}${octave}`;
                             return (
                                 <RimanovBlock key={note} note={note} sampler={sampler}>
-                                    {note}
+                                    {/* {note} */}
                                 </RimanovBlock>
                             );
                         })
                     )}
                 </div>
-                
-        </div> 
 
+                <div style={{ display: "flex", flexDirection: "column", padding: "1rem", position: "absolute", left: "475px", top: "33px" }}>
+                    {Range(5, 6).map((octave) =>
+                        abc.map((key) => {
+                            const note = `${key.note}${octave}`;
+                            return (
+                                <RimanovBlock key={note} note={note} sampler={sampler}>
+                                    {/* {note} */}
+                                </RimanovBlock>
+                            );
+                        })
+                    )}
+                </div>
+
+                <div style={{ display: "flex", flexDirection: "column", padding: "1rem", position: "absolute", left: "570px", top: "33px" }}>
+                    {Range(6, 7).map((octave) =>
+                        abc.map((key) => {
+                            const note = `${key.note}${octave}`;
+                            return (
+                                <RimanovBlock key={note} note={note} sampler={sampler}>
+                                    {/* {note} */}
+                                </RimanovBlock>
+                            );
+                        })
+                    )}
+                </div>
+            </div>
         </div>
     );
 };
