@@ -111,26 +111,21 @@ function Songs({ state, dispatch }: SideNavProps): JSX.Element {
   return (
     <Section title="Playlist">
       {songs.map((song) => (
-        <><div
+        <div
           key={song.get("id")}
           className="f6 pointer underline flex items-center no-underline i dim"
-          onClick={() => dispatch(new DispatchAction("PLAY_SONG", { id: song.get("id") }))}
+          onClick={() =>
+            dispatch(new DispatchAction("PLAY_SONG", { id: song.get("id") }))
+          }
         >
           <Music20 className="mr1" />
           {song.get("songTitle")}
-        </div><input id="search-input"  type="text"></input></>
+        </div>
       ))}
     </Section>
-
   );
 }
-function SearchBar({ state, dispatch }: SideNavProps): JSX.Element {
-  const songs: List<any> = state.get("songs", List());
-  return (
-      <div><input id="search-input"  type="text"></input></div>
 
-  );
-}
 
 export function SideNav({ state, dispatch }: SideNavProps): JSX.Element {
   return (
@@ -142,7 +137,6 @@ export function SideNav({ state, dispatch }: SideNavProps): JSX.Element {
         <Instruments state={state} dispatch={dispatch} />
         <Visualizers state={state} dispatch={dispatch} />
         <Songs state={state} dispatch={dispatch} />
-        <SearchBar state={state} dispatch={dispatch} />
 
       </div>
     </div>
