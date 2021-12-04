@@ -21,7 +21,7 @@ export const CansirinVisualizer = new Visualizer(
       const amplitude = values[i] as number;
       const x = p5.map(i, 0, values.length - 1, 0, width);
       const y = height / 2 + amplitude * height;
-      p5.rect(x + barWidth * i, height / 2 + 400, barWidth, -y);
+      p5.rect(x + barWidth * i, height / 2 + 400, barWidth, y - 600);
     }
   }
 );
