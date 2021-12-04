@@ -10,6 +10,8 @@ import { Vdao182Visualizer } from "./visualizers/Vdao182";
 import { Vdao182Instrument } from "./instruments/vdao182/Vdao182";
 import { RimanovVisualizer } from "./visualizers/Rimanov";
 import { RimanovInstrument } from "./instruments/rimanov/Rimanov";
+import { Xwen3Instrument } from "./instruments/Xwen3/Xwen3Flute";
+import { Xwen3Visualizer } from "./visualizers/Xwen3";
 
 /** ------------------------------------------------------------------------ **
  * The entire application state is stored in AppState.
@@ -27,11 +29,17 @@ const instruments = List([
   PianoInstrument,
   CanSirinInstrument,
   RimanovInstrument,
+  Xwen3Instrument,
+  // Vdao182Instrument,
+  // RimanovInstrument,
 ]);
 const visualizers = List([
   WaveformVisualizer,
   CansirinVisualizer,
   RimanovVisualizer,
+  Xwen3Visualizer,
+  // Vdao182Visualizer,
+  // RimanovVisualizer,
 ]);
 export const defaultState: AppState = Map<string, any>({
   instruments,
