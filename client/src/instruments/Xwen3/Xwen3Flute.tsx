@@ -55,7 +55,7 @@ const Xwen3Block: FC<Xwen3BlockProps> = ({
         textAlign: "center",
         color: "white",
         backgroundColor: "black",
-        borderRadius: "50%"
+        borderRadius: "50%",
       }}
     >
       {children}
@@ -82,21 +82,11 @@ interface Xwen3Props extends InstrumentProps {
 }
 
 const Xwen3: FC<InstrumentProps> = ({ state, dispatch, notes }) => {
-  const c = List([
-    { note: "C" },
-  ]);
+  const c = List([{ note: "C" }]);
 
-  const gab = List([
-    { note: "G" },
-    { note: "A" },
-    { note: "B" }
-  ]);
+  const gab = List([{ note: "G" }, { note: "A" }, { note: "B" }]);
 
-  const def = List([
-    {note: "D"},
-    {note: "E"},
-    {note: "F"}
-  ]);
+  const def = List([{ note: "D" }, { note: "E" }, { note: "F" }]);
 
   const [sampler, setSampler] = useState(
     new Tone.Sampler({
@@ -125,11 +115,27 @@ const Xwen3: FC<InstrumentProps> = ({ state, dispatch, notes }) => {
   useStartPlayer(sampler, state, dispatch, notes);
 
   return (
-    <div> 
-      <div style={{ backgroundImage: `url(${flute})`, width: "86%", padding: "1rem" }}> 4#:
-        <div style={{ display: "flex", flexDirection: "row", padding: "1.5rem" }}>
+    <div>
+      <div
+        style={{
+          backgroundImage: `url(${flute})`,
+          width: "86%",
+          padding: "1rem",
+        }}
+      >
+        {" "}
+        4#:
+        <div
+          style={{ display: "flex", flexDirection: "row", padding: "1.5rem" }}
+        >
           <table className="cNotes" style={{ display: "flex" }}>
-            <th style={{ display: "flex", flexDirection: "row", marginLeft: "4rem" }}>
+            <th
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                marginLeft: "4rem",
+              }}
+            >
               {Range(4, 5).map((octave) =>
                 c.map((key) => {
                   const note = `${key.note}${octave}`;
@@ -141,7 +147,13 @@ const Xwen3: FC<InstrumentProps> = ({ state, dispatch, notes }) => {
                 })
               )}
             </th>
-            <th style={{ display: "flex", flexDirection: "row", marginLeft: "24.3rem" }}>
+            <th
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                marginLeft: "24.3rem",
+              }}
+            >
               {Range(4, 5).map((octave) =>
                 def.map((key) => {
                   const note = `${key.note}${octave}`;
@@ -153,7 +165,13 @@ const Xwen3: FC<InstrumentProps> = ({ state, dispatch, notes }) => {
                 })
               )}
             </th>
-            <th style={{ display: "flex", flexDirection: "row", marginLeft: "1.5rem" }}>
+            <th
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                marginLeft: "1.5rem",
+              }}
+            >
               {Range(4, 5).map((octave) =>
                 gab.map((key) => {
                   const note = `${key.note}${octave}`;
@@ -168,9 +186,18 @@ const Xwen3: FC<InstrumentProps> = ({ state, dispatch, notes }) => {
           </table>
         </div>
         <p>5#:</p>
-        <div style={{ display: "flex", flexDirection: "row", padding: "2rem" }}> 
-          <table className="gNotes" style={{ display: "flex", marginTop: "0.25rem" }}>
-            <th style={{ display: "flex", flexDirection: "row", marginLeft: "3.5rem" }}>
+        <div style={{ display: "flex", flexDirection: "row", padding: "2rem" }}>
+          <table
+            className="gNotes"
+            style={{ display: "flex", marginTop: "0.25rem" }}
+          >
+            <th
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                marginLeft: "3.5rem",
+              }}
+            >
               {Range(5, 6).map((octave) =>
                 c.map((key) => {
                   const note = `${key.note}${octave}`;
@@ -182,7 +209,13 @@ const Xwen3: FC<InstrumentProps> = ({ state, dispatch, notes }) => {
                 })
               )}
             </th>
-            <th style={{ display: "flex", flexDirection: "row", marginLeft: "24.3rem" }}>
+            <th
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                marginLeft: "24.3rem",
+              }}
+            >
               {Range(5, 6).map((octave) =>
                 def.map((key) => {
                   const note = `${key.note}${octave}`;
@@ -194,7 +227,13 @@ const Xwen3: FC<InstrumentProps> = ({ state, dispatch, notes }) => {
                 })
               )}
             </th>
-            <th style={{ display: "flex", flexDirection: "row", marginLeft: "1.5rem" }}>
+            <th
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                marginLeft: "1.5rem",
+              }}
+            >
               {Range(5, 6).map((octave) =>
                 gab.map((key) => {
                   const note = `${key.note}${octave}`;
@@ -209,9 +248,18 @@ const Xwen3: FC<InstrumentProps> = ({ state, dispatch, notes }) => {
           </table>
         </div>
         <p>6#:</p>
-        <div style={{ display: "flex", flexDirection: "row", padding: "2rem" }}> 
-          <table className="gNotes" style={{ display: "flex", marginTop: "-0.25rem" }}>
-            <th style={{ display: "flex", flexDirection: "row", marginLeft: "3.5rem" }}>
+        <div style={{ display: "flex", flexDirection: "row", padding: "2rem" }}>
+          <table
+            className="gNotes"
+            style={{ display: "flex", marginTop: "-0.25rem" }}
+          >
+            <th
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                marginLeft: "3.5rem",
+              }}
+            >
               {Range(6, 7).map((octave) =>
                 c.map((key) => {
                   const note = `${key.note}${octave}`;
@@ -223,7 +271,13 @@ const Xwen3: FC<InstrumentProps> = ({ state, dispatch, notes }) => {
                 })
               )}
             </th>
-            <th style={{ display: "flex", flexDirection: "row", marginLeft: "24.3rem" }}>
+            <th
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                marginLeft: "24.3rem",
+              }}
+            >
               {Range(6, 7).map((octave) =>
                 def.map((key) => {
                   const note = `${key.note}${octave}`;
@@ -235,7 +289,13 @@ const Xwen3: FC<InstrumentProps> = ({ state, dispatch, notes }) => {
                 })
               )}
             </th>
-            <th style={{ display: "flex", flexDirection: "row", marginLeft: "1.5rem" }}>
+            <th
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                marginLeft: "1.5rem",
+              }}
+            >
               {Range(6, 7).map((octave) =>
                 gab.map((key) => {
                   const note = `${key.note}${octave}`;

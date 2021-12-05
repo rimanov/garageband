@@ -30,16 +30,14 @@ const instruments = List([
   CanSirinInstrument,
   RimanovInstrument,
   Xwen3Instrument,
-  // Vdao182Instrument,
-  // RimanovInstrument,
+  Vdao182Instrument,
 ]);
 const visualizers = List([
   WaveformVisualizer,
   CansirinVisualizer,
   RimanovVisualizer,
   Xwen3Visualizer,
-  // Vdao182Visualizer,
-  // RimanovVisualizer,
+  Vdao182Visualizer,
 ]);
 export const defaultState: AppState = Map<string, any>({
   instruments,

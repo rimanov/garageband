@@ -24,9 +24,14 @@ interface SideNavProps {
   dispatch: React.Dispatch<DispatchAction>;
 }
 
-const Section: React.FC<{ title: string }> = ({ title, children }) => {
+type SectionProps = {
+  title: string;
+  height?: 25 | 50 | 75;
+};
+
+const Section: React.FC<SectionProps> = ({ title, height = 25, children }) => {
   return (
-    <div className="flex flex-column h-25 bb b--light-gray pa3 flex-grow-1">
+    <div className={`flex flex-column bb h-${height} b--light-gray pa3`}>
       <div className="fw7 mb2">{title} </div>
       <div className="flex-auto overflow-scroll">{children}</div>
     </div>
@@ -115,51 +120,48 @@ function Songs({ state, dispatch }: SideNavProps): JSX.Element {
   );
 
   useEffect(() => {
+    setFilteredSongs(songs);
+  }, [songs]);
+
+  useEffect(() => {
     const filteredSongs = songs.filter((song) => {
+      const queryWithLowerCase = query.toLowerCase();
       switch (filter) {
         case "Album":
-          const album = song.get("album");
-          return album.includes(query);
+          const album = (song.get("album") as string).toLowerCase();
+          return album.includes(queryWithLowerCase);
         case "Artist":
-          const artist = song.get("artist");
-          return artist.includes(query);
+          const artist = (song.get("artist") as string).toLowerCase();
+          return artist.includes(queryWithLowerCase);
         case "Song":
-          const songTitle = song.get("songTitle");
-          return songTitle.includes(query);
+          const songTitle = (song.get("songTitle") as string).toLowerCase();
+          return songTitle.includes(queryWithLowerCase);
       }
     });
     setFilteredSongs(filteredSongs);
   }, [query, filter]);
 
   return (
-    <Section title="Playlist">
-      {songs.map((song) => (
-        <div
-          key={song.get("id")}
-          className="f6 pointer underline flex items-center no-underline i dim"
-        >
-          <SearchBar setQuery={setQuery} setFilter={setFilter} />
-          {filteredSongs.map((song) => (
-            <div
-              key={song.get("id")}
-              className="f6 pointer underline flex items-center no-underline i dim bb pa1"
-              onClick={() =>
-                dispatch(
-                  new DispatchAction("PLAY_SONG", { id: song.get("id") })
-                )
-              }
-            >
-              <Music20 className="mr1" />
-              {song.get("songTitle")}
-              <div className="flex-column">
-                {song.get("songTitle")}
-                <p className="dark-green pa0">{song.get("artist")}</p>
-                <p className="green pa0">{song.get("album")}</p>
-              </div>
+    <Section title="Playlist" height={50}>
+      <SearchBar setQuery={setQuery} setFilter={setFilter} />
+      <div className="flex-auto overflow-scroll">
+        {filteredSongs.map((song) => (
+          <div
+            key={song.get("id")}
+            className="f6 pointer underline flex items-center no-underline i dim bb pa1"
+            onClick={() =>
+              dispatch(new DispatchAction("PLAY_SONG", { id: song.get("id") }))
+            }
+          >
+            <Music20 className="mr1" />
+            <div className="flex-column">
+              <p className="purple pa0">{song.get("songTitle")}</p>
+              <p className="dark-green pa0">{song.get("artist")}</p>
+              <p className="green pa0">{song.get("album")}</p>
             </div>
-          ))}
-        </div>
-      ))}
+          </div>
+        ))}
+      </div>
     </Section>
   );
 }
@@ -199,7 +201,9 @@ function SearchBar({ setQuery, setFilter }: SearchBarProps): JSX.Element {
           setField(event.target.value as FilterType);
         }}
       >
-        <option value="Song">Song</option>
+        <option value="Song" selected={true}>
+          Song
+        </option>
         <option value="Album">Album</option>
         <option value="Artist">Artist</option>
       </select>
