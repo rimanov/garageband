@@ -1,8 +1,8 @@
 // 3rd party library imports
-import * as Tone from 'tone';
-import Sketch from 'react-p5';
-import P5 from 'p5';
-import React, { useEffect, useMemo, useCallback } from 'react';
+import * as Tone from "tone";
+import Sketch from "react-p5";
+import P5 from "p5";
+import React, { useEffect, useMemo, useCallback } from "react";
 
 type VisualizerDrawer = (p5: P5, analyzer: Tone.Analyser) => void;
 
@@ -24,8 +24,8 @@ export function VisualizerContainer({ visualizer }: VisualizerContainerProps) {
   const { name, draw } = visualizer;
 
   const analyzer: Tone.Analyser = useMemo(
-    () => new Tone.Analyser('waveform', 256),
-    [],
+    () => new Tone.Analyser("waveform", 256),
+    []
   );
 
   const onResize = useCallback((p5: P5) => {
@@ -50,11 +50,11 @@ export function VisualizerContainer({ visualizer }: VisualizerContainerProps) {
   };
 
   return (
-    <div className={'bg-black absolute bottom-0 right-0 left-0 h-50'}>
-      <div className={'z-1 absolute left-0 top-0 pa4 white f5'}>{name}</div>
+    <div className={"bg-black absolute bottom-0 right-0 left-0 h-50"}>
+      <div className={"z-1 absolute left-0 top-0 pa4 white f5"}>{name}</div>
       <Sketch
         setup={setup}
-        draw={p5 => draw(p5, analyzer)}
+        draw={(p5) => draw(p5, analyzer)}
         windowResized={onResize}
       />
     </div>

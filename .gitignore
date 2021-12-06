@@ -29,5 +29,7 @@ workspace.code-workspace
 # for secret credentials
 .env
 
+.idea
+
 # sqlite database file
 app.db

@@ -1,15 +1,15 @@
 // 3rd party library imports
-import React, { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
-import * as Tone from 'tone';
-import { Music32 } from '@carbon/icons-react';
+import React, { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import * as Tone from "tone";
+import { Music32 } from "@carbon/icons-react";
 
 // project imports
-import { InstrumentContainer } from './Instruments';
-import { AppState } from './State';
-import { DispatchAction } from './Reducer';
-import { SideNav } from './SideNav';
-import { VisualizerContainer } from './Visualizers';
+import { InstrumentContainer } from "./Instruments";
+import { AppState } from "./State";
+import { DispatchAction } from "./Reducer";
+import { SideNav } from "./SideNav";
+import { VisualizerContainer } from "./Visualizers";
 
 type PanelProps = {
   state: AppState;
@@ -24,7 +24,7 @@ function InstrumentPanel({ state, dispatch }: PanelProps): JSX.Element {
   /**
    * This React component is the top-level for the instrument.
    */
-  const instrument = state.get('instrument');
+  const instrument = state.get("instrument");
 
   return (
     <div>
@@ -43,7 +43,7 @@ function VisualizerPanel({ state }: PanelProps): JSX.Element {
   /**
    * This React component is the top-level for the visualizer.
    */
-  const visualizer = state.get('visualizer');
+  const visualizer = state.get("visualizer");
 
   return (
     <div>
@@ -62,7 +62,7 @@ function InstrumentAndVisualizer({ state, dispatch }: PanelProps): JSX.Element {
   return (
     <div
       className="absolute right-0 bottom-0 top-0 flex flex-column"
-      style={{ left: '16rem' }}
+      style={{ left: "16rem" }}
     >
       <InstrumentPanel state={state} dispatch={dispatch} />
       <VisualizerPanel state={state} dispatch={dispatch} />
@@ -74,7 +74,7 @@ function ShowWelcome(): JSX.Element {
   return (
     <div
       className="absolute right-0 bottom-0 top-0 flex flex-column items-center justify-center"
-      style={{ left: '16rem' }}
+      style={{ left: "16rem" }}
     >
       <div className="mw6 lh-copy mb4">
         <Music32 />
@@ -99,11 +99,11 @@ export function MainPage({ state, dispatch }: PanelProps): JSX.Element {
    */
 
   const location = useLocation();
-  const isWelcome = !state.get('instrument');
-  console.log('INSTRUMENT', isWelcome);
+  const isWelcome = !state.get("instrument");
+  console.log("INSTRUMENT", isWelcome);
 
   useEffect(() => {
-    dispatch(new DispatchAction('SET_LOCATION', { location }));
+    dispatch(new DispatchAction("SET_LOCATION", { location }));
   }, [dispatch, location]);
 
   return (
