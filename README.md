@@ -52,7 +52,7 @@ You will also see errors in the console.
 
 ---------------
 Team players:
-Rasul Imanov, 920668590
-Xinrong Wen, 918565536
-Vi Dao, 920353977
-Can Sirin, 920776204
+- Rasul Imanov, 920668590
+- Xinrong Wen, 918565536
+- Vi Dao, 920353977
+- Can Sirin, 920776204
